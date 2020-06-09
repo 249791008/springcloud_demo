@@ -1,0 +1,28 @@
+
+server:
+  port: 8082
+spring:
+  application:
+    name: server-teacher
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:11000/eureka
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: true
+        requestVolumeThreshold: 2
+        sleepWindowInMilliseconds: 5000
+      execution:
+        timeout:
+          enabled: false
